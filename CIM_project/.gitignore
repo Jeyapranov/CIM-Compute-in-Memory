@@ -1,0 +1,18 @@
+# Cadence System Files
+.cadence/
+viva/
+*.log
+*.history
+*.cdslck
+*.lck
+cds.lib
+lib.defs
+
+# Simulation Results (Too large)
+simulation/
+ADEXL/
+maestro/
+
+# OS Files
+.DS_Store
+Thumbs.db
