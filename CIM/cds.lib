@@ -1,5 +1,0 @@
-SOFTINCLUDE /home/buet/cadence/IC615/share/cdssetup/cds.lib
-DEFINE 10t_sram /home/buet/Desktop/CIM/10t_sram
-DEFINE cim_array /home/buet/Desktop/CIM/cim_array
-DEFINE CIM_project /home/buet/Desktop/CIM/CIM_project
-DEFINE CIM_project /home/buet/Desktop/CIM/CIM_project

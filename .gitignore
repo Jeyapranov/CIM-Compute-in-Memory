@@ -1,0 +1,83 @@
+# ============================================================
+# .gitignore for Cadence Virtuoso / OpenAccess VLSI Projects
+# Reconfigurable 10T SRAM CIM Project
+# ============================================================
+
+# -------------------- Cadence System Files --------------------
+.cadence/
+.cdsinit
+.cdsenv
+.cdsce
+.cdsinit~
+cds.lib
+lib.defs
+display.drf
+.cdsplotinit
+.rundir/
+
+# -------------------- Cadence Lock Files ----------------------
+*.cdslck
+*.cdslck.*
+*.lck
+*.lock
+
+# -------------------- Cadence Logs & History ------------------
+*.log
+*.log.*
+*.history
+*.errlog
+*.out
+*.rec
+
+# -------------------- ViVA Waveform Viewer --------------------
+viva/
+
+# -------------------- Simulation Outputs ----------------------
+simulation/
+results/
+psf/
+*.fsdb
+*.vpd
+*.vcd
+*.shm/
+*.trn
+*.raw
+
+# -------------------- ADE / Maestro ----------------------------
+ADEXL/
+maestro/
+
+# -------------------- OpenAccess Backup/Recovery Files --------
+*.oa-
+*.oa~
+
+# -------------------- Cadence Temp & Crash Files --------------
+*.swp
+*.swo
+*~
+core.*
+hs_err_*
+
+# -------------------- OS Generated Files ----------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.nfs*
+
+# -------------------- IDE / Editor Files ----------------------
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
