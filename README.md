@@ -18,9 +18,9 @@ This project presents the design and simulation of a **Reconfigurable 10-Transis
 The conventional von Neumann architecture suffers from the *memory wall* problem — frequent data transfers between the processor and memory create a bottleneck in terms of latency, bandwidth, and energy. **CIM** addresses this by performing logical and arithmetic computations **directly inside the memory array**, eliminating expensive data movement.
 
 The proposed 10T SRAM topology features:
-- **Fully decoupled read and write paths** for improved stability
-- **High-threshold voltage (HVT) NMOS transistors** in the read path to suppress leakage current
-- **In-memory bitwise AND computation** through a dedicated Compute Word Line (CWL)
+- **6T core for weight storage** — Cross-coupled inverters with write access transistors for robust data retention
+- **3T external read port** — Provides isolated, single-ended read access decoupled from storage nodes, eliminating read-disturb issues
+- **1T HVT NMOS compute transistor** — High-threshold voltage transistor enables in-memory AND computation with minimal leakage
 - **~22% power reduction** compared to existing CIM SRAM designs
 
 This design is highly suitable for **AI/Edge computing**, **IoT devices**, and **neural network accelerators** where low power and high throughput are critical.
@@ -32,21 +32,20 @@ This design is highly suitable for **AI/Edge computing**, **IoT devices**, and *
 ### 10T SRAM Bitcell
 
 The 10T cell consists of:
-- **6T core** — Cross-coupled inverters (M1–M4) with write access transistors (M5–M6) for robust data storage
-- **Isolated read port** — Transistors M7 and M8 provide a buffered, single-ended read path decoupled from the storage nodes, eliminating read-disturb issues
-- **CIM transistors** — M9 and M10, controlled by a **Compute Word Line (CWL)**, enable in-memory AND operations between stored data and the bitline
+- **6T Storage Core** — Cross-coupled inverters (M1–M4) with write access transistors (M5–M6) for storing weight/data with robust retention
+- **3T External Read Port** — Transistors M7, M8, and M9 provide a buffered, single-ended read path completely isolated from the storage nodes, eliminating read-disturb issues
+- **1T HVT NMOS Compute Transistor** — M10, a high-threshold voltage NMOS controlled by the **Compute Word Line (CWL)**, enables in-memory AND operations with suppressed leakage current
 
 ### 2×2 SRAM Array
 
 The complete array integrates the following peripheral circuitry:
 | Block | Function |
 |:---|:---|
-| **SRAM Cell (10T)** | Core storage + CIM bitcell |
+| **SRAM Cell (10T)** | 6T storage + 3T read port + 1T HVT compute |
 | **Precharge Circuit** | Pre-charges bitlines (BL, BLB) to VDD before read/write |
 | **Sense Amplifier** | Amplifies small differential voltage on bitlines during read |
 | **Write Driver** | Drives full-swing data onto bitlines during write operations |
 | **Row Decoder** | Selects the appropriate word line (WL) based on address |
-| **Column MUX** | Selects the target column for read/write access |
 | **Isolation Circuit** | Isolates the bitlines during CIM operations to prevent data corruption |
 
 ---
@@ -153,9 +152,7 @@ Reconfigurable-10T-SRAM-CIM/
 │       │   ├── schematic/
 │       │   └── symbol/
 │       │
-│       ├── mux/                     # Column Multiplexer
-│       │   └── schematic/
-│       │
+
 │       ├── isolation/               # Isolation Circuit
 │       │   ├── schematic/
 │       │   └── symbol/
@@ -186,7 +183,6 @@ Reconfigurable-10T-SRAM-CIM/
     ├── sense_amp_schematic.png
     ├── precharge_schematic.png
     ├── writedriver_schematic.png
-    ├── mux_schematic.png
     ├── isolation_schematic.png
     └── ...
 ```
@@ -216,7 +212,6 @@ Reconfigurable-10T-SRAM-CIM/
 | **Sense Amplifier** | ![SA](Images/sense_amp_schematic.png) | ![SA Sym](Images/sense_amp_symbol.png) |
 | **Precharge** | ![PC](Images/precharge_schematic.png) | ![PC Sym](Images/precharge_symbol.png) |
 | **Write Driver** | ![WD](Images/writedriver_schematic.png) | ![WD Sym](Images/writedriver_symbol.png) |
-| **MUX** | ![MUX](Images/mux_schematic.png) | — |
 | **Isolation** | ![ISO](Images/isolation_schematic.png) | ![ISO Sym](Images/isolation_symbol.png) |
 
 ---
@@ -289,19 +284,6 @@ Cell 1: Q1 = 1, CWL1 = 1 → M9 ON
 Cell 2: Q2 = 0, CWL2 = 1 → M10 OFF
 Result: RBL stays high → AND = 0
 ```
-
----
-
-## 👥 Team Members
-
-| Name | Role |
-|:---|:---|
-| **Jeyapranov R** | Lead Designer & Simulation |
-| **Abirami S** | Circuit Design & Analysis |
-| **Magesh Kumar E** | Layout & Verification |
-| **Narmatha B** | Documentation & Testing |
-
-**Project Guide:** Dr. P. Deepa, Associate Professor, ECE Department, GCT Coimbatore
 
 ---
 
