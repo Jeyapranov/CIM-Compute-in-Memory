@@ -259,7 +259,7 @@ Reconfigurable-10T-SRAM-CIM/
 
 ## 📄 Documentation
 
-- **[Full Project Report (PDF)](CIM/reports/CIM_REPORT.pdf)** — Comprehensive report including theory, design methodology, simulation results, and analysis.
+- **[Full Project Report (PDF)](reports/CIM_REPORT.pdf)** — Comprehensive report including theory, design methodology, simulation results, and analysis.
 
 ---
 
